@@ -30,8 +30,9 @@ let notes = [ //const notes = require('./db.json')
 const express = require('express')
 const app = express()
 app.use(express.json()) // activate json parser, useful to post
+app.use(express.static('dist')) // have express check the dict directory for GET-requested files (used for frontend files)
 
-const cors = require('cors')
+const cors = require('cors') // when the frontend and backend are on different ports, we need to allow cross-origin requests
 app.use(cors())
 
 const requestLogger = (request, response, next) => {
